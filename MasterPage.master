@@ -1,0 +1,113 @@
+﻿<%@ Master Language="VB" CodeFile="MasterPage.master.vb" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style type="text/css">
+        .auto-style1 {
+            width: 100%;
+            border-style: solid;
+            border-width: 1px;
+        }
+        .auto-style2 {
+            height: 22px;
+            width: 63px;
+        }
+        .auto-style4 {
+            height: 22px;
+            width: 86px;
+        }
+        .auto-style5 {
+            width: 86px;
+        }
+        .auto-style6 {
+            height: 22px;
+            width: 865px;
+        }
+        .auto-style7 {
+            width: 865px;
+        }
+        .auto-style8 {
+            width: 63px;
+        }
+        .auto-style9 {
+            width: 100%;
+        }
+        .auto-style10 {}
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+       
+            <div>
+                <table class="auto-style1">
+                    <tr>
+                        <td class="auto-style4">&nbsp;</td>
+                        <td class="auto-style6">
+                            <asp:Image ID="Image1" runat="server" ImageUrl="~/Image/SinhVienIT.Net---1410195-header8copy.jpg" />
+                        </td>
+                        <td class="auto-style2"></td>
+                    </tr>
+                    <tr>
+                        <td class="auto-style5">
+                           <asp:Image ID="Image3" runat="server" ImageUrl="~/Image/201526975.jpg" style="text-align: left; margin-right: 0px;" />
+                        </td>
+                        <td class="auto-style7">&nbsp;      
+                                  
+                                        <div>
+                                            <div>
+                                            </div>
+                                            <div>
+                                                  <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+                                                      <div>
+                                                          <br />
+                                                       </div>
+                                                   </asp:ContentPlaceHolder>
+                                            </div>
+                                        </div>
+
+                        </td>
+                        <td class="auto-style8">
+              
+                            <table class="auto-style9">
+                                <tr>
+                                    <td colspan="2">Information</td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style10">Username</td>
+                                    <td>
+                                        <asp:Label ID="lblSession" runat="server" ForeColor="Red"></asp:Label>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <asp:Button ID="Button1" runat="server" Text="View Profile" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style10" colspan="2">
+                                        <asp:Button ID="Button2" runat="server" Text="EditProfile" Width="102px" />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="auto-style10" colspan="2">
+                                        <asp:Button ID="Button3" runat="server" Text="Logout" Width="100px" />
+                                    </td>
+                                </tr>
+                            </table>
+              
+                        </td>
+                    </tr>
+                  
+                      <tr>
+                        <td colspan="3" style="text-align: center">This is footer</td>
+                    </tr>
+                </table>
+            </div>
+   </form>
+</body>
+</html>

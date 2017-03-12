@@ -1,56 +1,54 @@
-﻿Imports System.IO
-Imports System.Text
-Imports System.Data
+﻿Imports System.Data
 Imports System.Data.SqlClient
-Imports System.Configuration
+Imports System.Web.Security
 Imports System.Security.Cryptography
+Imports System.Text
+Imports Utilities
 
-Public Class Login
+
+
+
+Partial Class _Default
     Inherits System.Web.UI.Page
-    Private _connect As String = ConfigurationSettings.AppSettings("myconnectionstring")
-    Private conn As SqlConnection
-    Private da As SqlDataAdapter
 
-    Private Function getDatatable(sqlQuery As String) As DataTable
-        Dim dtable As New DataTable
-        conn = New SqlConnection(_connect)
-        da = New SqlDataAdapter(sqlQuery, conn)
-        Try
-            conn.Open()
-            da.Fill(dtable)
 
-        Catch ex As Exception
-            'Hien thi thong bao loi tai day 
-        Finally
-            conn.Close()
-
-        End Try
-        Return dtable
+    Dim utilitie As New Utilities
+  
+    Public Function isEmpty() As Boolean
+        Return String.IsNullOrEmpty(Me.txuser.Text) OrElse String.IsNullOrEmpty(Me.txtpass.Text)
     End Function
 
-    Private Function Checklogin(user As String, pas As String)
-        Dim sqlQuery As String = String.Format("Select * from Phanquyen where username='{0}' and password='{1}'", user, pas)
-        Dim dTable As DataTable = getDatatable(sqlQuery)
-        Return dTable.Rows.Count > 0
-
-    End Function
-
-    '    Private Function isEmpty() As Boolean
-    '       Return String.IsNullOrEmpty(Me.txtusername.Text) OrElse String.IsNullOrEmpty(Me.txtpassword.Text)
-    '  End Function
-
-    Protected Sub Page_Load(ByVal sender As Object, ByVal e As System.EventArgs) Handles Me.Load
+    
+    Protected Sub Page_Load(sender As Object, e As EventArgs) Handles Me.Load
 
     End Sub
 
+    Protected Sub btnlogin_Click(sender As Object, e As EventArgs) Handles btnlogin.Click
+      
+        If isEmpty() Then
+            MsgBox("User or password is empty")
 
-    
-  
-    Protected Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        ElseIf utilitie.Checklogin(Me.txuser.Text.ToLower, (utilitie.Hash512(Me.txtpass.Text.ToLower))) Then
+            ' ElseIf utilitie.CheckLogin(Me.txuser.Text.ToLower, Me.txtpass.Text.ToLower) Then
 
-        Session("name") = txtname.Text
-        Response.Redirect("Home.aspx")
-        '/Server.Transfer("Home.aspx")
+            Session("UserName") = Me.txuser.Text
+            Session("Password") = Me.txtpass.Text
+            Response.Redirect("HomePage.aspx")
+            MsgBox("Login Sugcess")
+
+
+        Else
+            MsgBox("Username or pasword is incorect")
+
+
+
+        End If
+
+      
+
+    End Sub
+
+    Protected Sub txuser_TextChanged(sender As Object, e As EventArgs) Handles txuser.TextChanged
 
     End Sub
 End Class
