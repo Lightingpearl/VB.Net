@@ -1,12 +1,6 @@
 ﻿<%@ Page Language="VB" AutoEventWireup="false" CodeFile="Login.aspx.vb" Inherits="_Default" %>
 
 <!DOCTYPE html>
-<script runat="server">
-
-    Protected Sub Page_Load(sender As Object, e As EventArgs)
-
-    End Sub
-</script>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
@@ -63,13 +57,7 @@
             <tr>
                 <td class="auto-style2">Password</td>
                 <td class="auto-style4">
-                    <asp:TextBox ID="txtpass" runat="server" Width="284px"></asp:TextBox>
-                </td>
-            </tr>
-            <tr>
-                <td class="auto-style5">Remember me ?</td>
-                <td class="auto-style5">
-                    <asp:CheckBox ID="ckbremember" runat="server" />
+                    <asp:TextBox ID="txtpass" runat="server" Width="284px" TextMode="Password"></asp:TextBox>
                 </td>
             </tr>
             <tr>
